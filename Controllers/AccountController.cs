@@ -1,90 +1,90 @@
-// using Microsoft.AspNetCore.Mvc;
-// using OnlyAssetsFinal.Models;
-// using ustaTickets.Data.Services;
+using Microsoft.AspNetCore.Mvc;
+using OnlyAssetsFinal.Models;
+using OnlyAssetsFinal.Data.Services;
 
-// namespace OnlyAssetsFinal.Controllers
-// {
-    
-//     public class AccountController : Controller
-//     {
-//          private readonly IAccountService _service;
+namespace OnlyAssetsFinal.Controllers
+{
 
-//         public AccountController(IAccountService service)
-//         {
-//             _service = service;
-//         }
+    public class AccountController : Controller
+    {
+        private readonly IAccountService _service;
 
-//         public async Task<IActionResult> Index()
-//         {
-//             var data = await _service.GetAllAsync();
-//             return View(data);
-//         }
+        public AccountController(IAccountService service)
+        {
+            _service = service;
+        }
 
-//         // Get: Actor/Create
-//         public IActionResult Create()
-//         {
-//             return View();
-//         }
+        public async Task<IActionResult> Index()
+        {
+            var data = await _service.GetAllAsync();
+            return View(data);
+        }
 
-//         [HttpPost]
-//         public async Task<IActionResult> Create([Bind("Email,Password,NickName,CreationDate,CountryCreation,ProfilePictureURL")]Account account)
-//         {
-//             if (!ModelState.IsValid)
-//             {
-//                 //var message = string.Join(" | ", ModelState.Values
-//                 //    .SelectMany(v => v.Errors)
-//                 //    .Select(e => e.ErrorMessage));
-//                 return View(account);
-//             }
-//             await _service.AddAsync(account);
-//             return RedirectToAction(nameof(Index));
-//         }
+        // Get: Actor/Create
+        public IActionResult Create()
+        {
+            return View();
+        }
 
-//         // Get: Actor/Details/id
-//         public async Task<IActionResult> Details(int id)
-//         {
-//             var accountDetails = await _service.GetByIdAsync(id);
-//             if (accountDetails == null) return View("NotFound");
-//             return View(accountDetails);
-//         }
+        [HttpPost]
+        public async Task<IActionResult> Create([Bind("Email,Password,NickName,CreationDate,CountryCreation,ProfilePictureURL")] Account account)
+        {
+            if (!ModelState.IsValid)
+            {
+                //var message = string.Join(" | ", ModelState.Values
+                //    .SelectMany(v => v.Errors)
+                //    .Select(e => e.ErrorMessage));
+                return View(account);
+            }
+            await _service.AddAsync(account);
+            return RedirectToAction(nameof(Index));
+        }
 
-//         // Get: Actor/Edit/id
-//         public async Task<IActionResult> Edit(int id)
-//         {
-//             var accountDetails = await _service.GetByIdAsync(id);
-//             if (accountDetails == null) return View("NotFound");
-//             return View(accountDetails);
-//         }
+        // Get: Actor/Details/id
+        public async Task<IActionResult> Details(int id)
+        {
+            var accountDetails = await _service.GetByIdAsync(id);
+            if (accountDetails == null) return View("NotFound");
+            return View(accountDetails);
+        }
 
-//         [HttpPost]
-//         public async Task<IActionResult> Edit(int id, [Bind("Id,Email,Password,NickName,CreationDate,CountryCreation,ProfilePictureURL")] Account account)
-//         {
-//             if (!ModelState.IsValid) return View(account);
+        // Get: Actor/Edit/id
+        public async Task<IActionResult> Edit(int id)
+        {
+            var accountDetails = await _service.GetByIdAsync(id);
+            if (accountDetails == null) return View("NotFound");
+            return View(accountDetails);
+        }
 
-//             if (id == account.Id)
-//             {
-//                 await _service.UpdateAsync(id, account);
-//                 return RedirectToAction(nameof(Index));
-//             }
-//             return View(account);
-//         }
+        [HttpPost]
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Email,Password,NickName,CreationDate,CountryCreation,ProfilePictureURL")] Account account)
+        {
+            if (!ModelState.IsValid) return View(account);
 
-//         // Get: Actor/Delete/id
-//         public async Task<IActionResult> Delete(int id)
-//         {
-//             var accountDetails = await _service.GetByIdAsync(id);
-//             if (accountDetails == null) return View("NotFound");
-//             return View(accountDetails);
-//         }
+            if (id == account.Id)
+            {
+                await _service.UpdateAsync(id, account);
+                return RedirectToAction(nameof(Index));
+            }
+            return View(account);
+        }
 
-//         [HttpPost, ActionName("Delete")]
-//         public async Task<IActionResult> DeleteConfirmed(int id)
-//         {
-//             var accountDetails = await _service.GetByIdAsync(id);
-//             if (accountDetails == null) return View("NotFound");
+        // Get: Actor/Delete/id
+        public async Task<IActionResult> Delete(int id)
+        {
+            var accountDetails = await _service.GetByIdAsync(id);
+            if (accountDetails == null) return View("NotFound");
+            return View(accountDetails);
+        }
 
-//             await _service.DeleteAsync(id);
-//             return RedirectToAction(nameof(Index));
-//         } 
-//     }
-// }
+        [HttpPost, ActionName("Delete")]
+        public async Task<IActionResult> DeleteConfirmed(int id)
+        {
+            var accountDetails = await _service.GetByIdAsync(id);
+            if (accountDetails == null) return View("NotFound");
+
+            await _service.DeleteAsync(id);
+            return RedirectToAction(nameof(Index));
+        }
+    }
+}

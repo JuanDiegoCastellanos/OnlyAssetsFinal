@@ -1,11 +1,11 @@
-// using Microsoft.AspNetCore.Mvc;
-// using OnlyAssetsFinal.Models;
-// using ustaTickets.Data.Services;
+using Microsoft.AspNetCore.Mvc;
+using OnlyAssetsFinal.Models;
+using OnlyAssetsFinal.Data.Services;
 
-// namespace OnlyAssetsFinal.Controllers
-// {
-//     public class PurchaseController : Controller
-//     {
-        
-//     }
-// }
+namespace OnlyAssetsFinal.Controllers
+{
+    public class PurchaseController : Controller
+    {
+
+    }
+}

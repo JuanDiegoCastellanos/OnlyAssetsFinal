@@ -1,90 +1,92 @@
-// using Microsoft.AspNetCore.Mvc;
-// using OnlyAssetsFinal.Models;
-// using ustaTickets.Data.Services;
+using Microsoft.AspNetCore.Mvc;
+using OnlyAssetsFinal.Models;
+using OnlyAssetsFinal.Data.Services;
 
-// namespace OnlyAssetsFinal.Controllers
-// {
-    
-//     public class RoleController : Controller
-//     {
-//      private readonly IRoleService _service;
+namespace OnlyAssetsFinal.Controllers
+{
 
-//         public RoleController(IRoleService service)
-//         {
-//             _service = service;
-//         }
+    public class RoleController : Controller
+    {
+        /*
+        private readonly IRoleService _service;
 
-//         public async Task<IActionResult> Index()
-//         {
-//             var data = await _service.GetAllAsync();
-//             return View(data);
-//         }
+        public RoleController(IRoleService service)
+        {
+            _service = service;
+        }
 
-//         // Get: Actor/Create
-//         public IActionResult Create()
-//         {
-//             return View();
-//         }
+        public async Task<IActionResult> Index()
+        {
+            var data = await _service.GetAllAsync();
+            return View(data);
+        }
 
-//         [HttpPost]
-//         public async Task<IActionResult> Create([Bind("RoleType")]Role role)
-//         {
-//             if (!ModelState.IsValid)
-//             {
-//                 //var message = string.Join(" | ", ModelState.Values
-//                 //    .SelectMany(v => v.Errors)
-//                 //    .Select(e => e.ErrorMessage));
-//                 return View(role);
-//             }
-//             await _service.AddAsync(role);
-//             return RedirectToAction(nameof(Index));
-//         }
+        // Get: Actor/Create
+        public IActionResult Create()
+        {
+            return View();
+        }
 
-//         // Get: Actor/Details/id
-//         public async Task<IActionResult> Details(int id)
-//         {
-//             var roleDetails = await _service.GetByIdAsync(id);
-//             if (roleDetails == null) return View("NotFound");
-//             return View(roleDetails);
-//         }
+        [HttpPost]
+        public async Task<IActionResult> Create([Bind("RoleType")] Role role)
+        {
+            if (!ModelState.IsValid)
+            {
+                //var message = string.Join(" | ", ModelState.Values
+                //    .SelectMany(v => v.Errors)
+                //    .Select(e => e.ErrorMessage));
+                return View(role);
+            }
+            await _service.AddAsync(role);
+            return RedirectToAction(nameof(Index));
+        }
 
-//         // Get: Actor/Edit/id
-//         public async Task<IActionResult> Edit(int id)
-//         {
-//             var roleDetails = await _service.GetByIdAsync(id);
-//             if (roleDetails == null) return View("NotFound");
-//             return View(roleDetails);
-//         }
+        // Get: Actor/Details/id
+        public async Task<IActionResult> Details(int id)
+        {
+            var roleDetails = await _service.GetByIdAsync(id);
+            if (roleDetails == null) return View("NotFound");
+            return View(roleDetails);
+        }
 
-//         [HttpPost]
-//         public async Task<IActionResult> Edit(int id, [Bind("Id,RoleType")] Role role)
-//         {
-//             if (!ModelState.IsValid) return View(role);
+        // Get: Actor/Edit/id
+        public async Task<IActionResult> Edit(int id)
+        {
+            var roleDetails = await _service.GetByIdAsync(id);
+            if (roleDetails == null) return View("NotFound");
+            return View(roleDetails);
+        }
 
-//             if (id == role.Id)
-//             {
-//                 await _service.UpdateAsync(id, role);
-//                 return RedirectToAction(nameof(Index));
-//             }
-//             return View(role);
-//         }
+        [HttpPost]
+        public async Task<IActionResult> Edit(int id, [Bind("Id,RoleType")] Role role)
+        {
+            if (!ModelState.IsValid) return View(role);
 
-//         // Get: Actor/Delete/id
-//         public async Task<IActionResult> Delete(int id)
-//         {
-//             var roleDetails = await _service.GetByIdAsync(id);
-//             if (roleDetails == null) return View("NotFound");
-//             return View(roleDetails);
-//         }
+            if (id == role.Id)
+            {
+                await _service.UpdateAsync(id, role);
+                return RedirectToAction(nameof(Index));
+            }
+            return View(role);
+        }
 
-//         [HttpPost, ActionName("Delete")]
-//         public async Task<IActionResult> DeleteConfirmed(int id)
-//         {
-//             var roleDetails = await _service.GetByIdAsync(id);
-//             if (roleDetails == null) return View("NotFound");
+        // Get: Actor/Delete/id
+        public async Task<IActionResult> Delete(int id)
+        {
+            var roleDetails = await _service.GetByIdAsync(id);
+            if (roleDetails == null) return View("NotFound");
+            return View(roleDetails);
+        }
 
-//             await _service.DeleteAsync(id);
-//             return RedirectToAction(nameof(Index));
-//         } 
-//     }
-// }
+        [HttpPost, ActionName("Delete")]
+        public async Task<IActionResult> DeleteConfirmed(int id)
+        {
+            var roleDetails = await _service.GetByIdAsync(id);
+            if (roleDetails == null) return View("NotFound");
+
+            await _service.DeleteAsync(id);
+            return RedirectToAction(nameof(Index));
+        }
+        */
+    }
+}
