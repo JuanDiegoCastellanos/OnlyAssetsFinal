@@ -1,8 +1,7 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using OnlyAssetsFinal.Data;
-using OnlyAssetsFinal.Data.Services;
-using ustaTickets.Data.Services;
+//using OnlyAssetsFinal.Data.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -18,12 +17,12 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
 });
 
 //Service Configuration
-builder.Services.AddScoped<IPersonService, PersonService>();
-builder.Services.AddScoped<IPurchaseService, PurchaseService>();
-builder.Services.AddScoped<IRoleService, RoleService>();
-builder.Services.AddScoped<IAccountService, AccountService>();
-builder.Services.AddScoped<IAssetService, AssetService>();
-builder.Services.AddScoped<ICreatorService, CreatorService>();
+// builder.Services.AddScoped<IPersonService, PersonService>();
+// builder.Services.AddScoped<IPurchaseService, PurchaseService>();
+// builder.Services.AddScoped<IRoleService, RoleService>();
+// builder.Services.AddScoped<IAccountService, AccountService>();
+// builder.Services.AddScoped<IAssetService, AssetService>();
+// builder.Services.AddScoped<ICreatorService, CreatorService>();
 
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 

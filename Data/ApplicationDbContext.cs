@@ -14,23 +14,23 @@ public class ApplicationDbContext : IdentityDbContext
     protected override void OnModelCreating(ModelBuilder builder)
     {
         // Relations One to Many
-        builder.Entity<Asset_Purchase>().HasKey(assetPurchase => new
+        builder.Entity<Purchase>().HasKey(assetPurchase => new
         {
             assetPurchase.AssetId,
-            assetPurchase.PurchaseId
+            assetPurchase.AccountId
         });
 
-        builder.Entity<Asset_Purchase>()
+        builder.Entity<Purchase>()
         .HasOne(assetPurchase => assetPurchase.Asset)
-        .WithMany(asset => asset.Asset_Purchases)
+        .WithMany(asset => asset.Purchases)
         .HasPrincipalKey(asset => asset.Id)
         .HasForeignKey(assetPurchase => assetPurchase.AssetId);
 
-        builder.Entity<Asset_Purchase>()
-        .HasOne(assetPurchase => assetPurchase.Purchase)
-        .WithMany(purchase=> purchase.Asset_Purchases)
+        builder.Entity<Purchase>()
+        .HasOne(purchase => purchase.Account)
+        .WithMany(account=> account.Purchases)
         .HasPrincipalKey(purchase => purchase.Id)
-        .HasForeignKey(assetPurchase => assetPurchase.PurchaseId);
+        .HasForeignKey(account => account.AccountId);
 
         builder.Entity<Account>().HasKey(ac => new 
         {
@@ -49,16 +49,6 @@ public class ApplicationDbContext : IdentityDbContext
         .WithMany(ac => ac.Accounts)
         .HasForeignKey(r => r.RoleId);
 
-        builder.Entity<Purchase>().HasKey(p => new{
-            p.Id,
-            p.AccountId
-        });
-        
-        builder.Entity<Purchase>()
-        .HasOne(p => p.Account)
-        .WithMany(ac => ac.Purchases)
-        .HasPrincipalKey(ac => ac.Id)
-        .HasForeignKey(p=> p.AccountId);
 
         builder.Entity<Asset>().HasKey(a => new{
             a.Id,
@@ -76,7 +66,6 @@ public class ApplicationDbContext : IdentityDbContext
 
     public DbSet<Account> Account {get; set;}
     public DbSet<Asset> Asset {get; set;}
-    public DbSet<Asset_Purchase> Asset_Purchase {get; set;}
     public DbSet<Person> Person {get; set;}
     public DbSet<Creator> Creator {get; set;}
     public DbSet<Purchase> Purchase {get; set;}

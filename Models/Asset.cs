@@ -24,7 +24,7 @@ namespace OnlyAssetsFinal.Models
         [ForeignKey("CreatorId")]
         public Creator Creator { get; set; }
 
-        public List<Asset_Purchase>  Asset_Purchases{ get; set; }
+        public List<Purchase>  Purchases { get; set; }
         
     }
 }

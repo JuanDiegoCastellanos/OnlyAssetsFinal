@@ -290,21 +290,6 @@ namespace OnlyAssetsFinal.Migrations
                     b.ToTable("Asset");
                 });
 
-            modelBuilder.Entity("OnlyAssetsFinal.Models.Asset_Purchase", b =>
-                {
-                    b.Property<int>("AssetId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("PurchaseId")
-                        .HasColumnType("int");
-
-                    b.HasKey("AssetId", "PurchaseId");
-
-                    b.HasIndex("PurchaseId");
-
-                    b.ToTable("Asset_Purchase");
-                });
-
             modelBuilder.Entity("OnlyAssetsFinal.Models.Creator", b =>
                 {
                     b.Property<int>("Id")
@@ -339,7 +324,8 @@ namespace OnlyAssetsFinal.Migrations
 
                     b.Property<string>("FullName")
                         .IsRequired()
-                        .HasColumnType("longtext");
+                        .HasMaxLength(50)
+                        .HasColumnType("varchar(50)");
 
                     b.Property<bool>("Gender")
                         .HasColumnType("tinyint(1)");
@@ -363,7 +349,7 @@ namespace OnlyAssetsFinal.Migrations
 
             modelBuilder.Entity("OnlyAssetsFinal.Models.Purchase", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("AssetId")
                         .HasColumnType("int");
 
                     b.Property<int>("AccountId")
@@ -376,7 +362,7 @@ namespace OnlyAssetsFinal.Migrations
                     b.Property<double>("TotalAmount")
                         .HasColumnType("double");
 
-                    b.HasKey("Id", "AccountId");
+                    b.HasKey("AssetId", "AccountId");
 
                     b.HasIndex("AccountId");
 
@@ -478,27 +464,6 @@ namespace OnlyAssetsFinal.Migrations
                     b.Navigation("Creator");
                 });
 
-            modelBuilder.Entity("OnlyAssetsFinal.Models.Asset_Purchase", b =>
-                {
-                    b.HasOne("OnlyAssetsFinal.Models.Asset", "Asset")
-                        .WithMany("Asset_Purchases")
-                        .HasForeignKey("AssetId")
-                        .HasPrincipalKey("Id")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("OnlyAssetsFinal.Models.Purchase", "Purchase")
-                        .WithMany("Asset_Purchases")
-                        .HasForeignKey("PurchaseId")
-                        .HasPrincipalKey("Id")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Asset");
-
-                    b.Navigation("Purchase");
-                });
-
             modelBuilder.Entity("OnlyAssetsFinal.Models.Purchase", b =>
                 {
                     b.HasOne("OnlyAssetsFinal.Models.Account", "Account")
@@ -508,7 +473,16 @@ namespace OnlyAssetsFinal.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.HasOne("OnlyAssetsFinal.Models.Asset", "Asset")
+                        .WithMany("Purchases")
+                        .HasForeignKey("AssetId")
+                        .HasPrincipalKey("Id")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.Navigation("Account");
+
+                    b.Navigation("Asset");
                 });
 
             modelBuilder.Entity("OnlyAssetsFinal.Models.Account", b =>
@@ -518,7 +492,7 @@ namespace OnlyAssetsFinal.Migrations
 
             modelBuilder.Entity("OnlyAssetsFinal.Models.Asset", b =>
                 {
-                    b.Navigation("Asset_Purchases");
+                    b.Navigation("Purchases");
                 });
 
             modelBuilder.Entity("OnlyAssetsFinal.Models.Creator", b =>
@@ -529,11 +503,6 @@ namespace OnlyAssetsFinal.Migrations
             modelBuilder.Entity("OnlyAssetsFinal.Models.Person", b =>
                 {
                     b.Navigation("Accounts");
-                });
-
-            modelBuilder.Entity("OnlyAssetsFinal.Models.Purchase", b =>
-                {
-                    b.Navigation("Asset_Purchases");
                 });
 
             modelBuilder.Entity("OnlyAssetsFinal.Models.Role", b =>
