@@ -1,6 +1,6 @@
 using Microsoft.EntityFrameworkCore;
-using onlyAssets.Data.ViewModels;
 using OnlyAssetsFinal.Data.Base;
+using OnlyAssetsFinal.Data.ViewModels;
 using OnlyAssetsFinal.Models;
 namespace OnlyAssetsFinal.Data.Services
 {
@@ -46,7 +46,7 @@ namespace OnlyAssetsFinal.Data.Services
             throw new NotImplementedException();
         }
 
-        public async Task<Account> GetAccountByIdAsync(int id)
+        public async  Task<Account> GetAccountByIdAsync(int id)
         {
             var accountDetails = await _context.Account
                 .Include(p => p.Person)

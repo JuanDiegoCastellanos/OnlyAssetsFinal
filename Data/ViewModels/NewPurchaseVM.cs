@@ -1,7 +1,7 @@
 
 using System.ComponentModel.DataAnnotations;
 
-namespace onlyassets.Data.ViewModels
+namespace OnlyAssetsFinal.Data.ViewModels
 {
     public class NewPurchaseVM
     {

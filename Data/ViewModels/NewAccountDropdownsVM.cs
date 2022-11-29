@@ -1,6 +1,6 @@
 ﻿using OnlyAssetsFinal.Models;
 
-namespace onlyAssets.Data.ViewModels
+namespace OnlyAssetsFinal.Data.ViewModels
 {
     public class NewAccountDropdownsVM
     {

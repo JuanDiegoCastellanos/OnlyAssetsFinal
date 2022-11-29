@@ -2,7 +2,7 @@
 using System.ComponentModel.DataAnnotations;
 using OnlyAssetsFinal.Data.Enums;
 
-namespace onlyassets.Data.ViewModels
+namespace OnlyAssetsFinal.Data.ViewModels
 {
     public class NewAssetVM
     {
@@ -32,9 +32,9 @@ namespace onlyassets.Data.ViewModels
         [Required(ErrorMessage = "Creator is required")]
         public int CreatorId { get; set; }
 
-        [Display(Name = "Select purchase(s)")]
-        [Required(ErrorMessage = "Purchase(s) is required")]
-        public List<int> PurchaseIds { get; set; }
+        [Display(Name = "Select Account(s)")]
+        [Required(ErrorMessage = "Account(s) is required")]
+        public List<int> AccountsIds { get; set; }
 
     }
 }

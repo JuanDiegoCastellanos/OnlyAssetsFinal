@@ -1,6 +1,6 @@
 using OnlyAssetsFinal.Models;
 using OnlyAssetsFinal.Data.Base;
-using onlyAssets.Data.ViewModels;
+using OnlyAssetsFinal.Data.ViewModels;
 
 namespace OnlyAssetsFinal.Data.Services
 {
