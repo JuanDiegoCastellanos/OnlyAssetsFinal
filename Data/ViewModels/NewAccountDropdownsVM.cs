@@ -2,12 +2,12 @@
 
 namespace onlyassets.Data.ViewModels
 {
-    public class NewMovieDropdownsVM
+    public class NewAccountDropdownsVM
     {
         public List<Role> Roles { get; set; }
         public List<Person> Persons { get; set; }
         public List<Purchase> Purchases {get; set;}
-        public NewMovieDropdownsVM()
+        public NewAccountDropdownsVM()
         {
             Roles = new List<Role>();
             Persons = new List<Person>();
