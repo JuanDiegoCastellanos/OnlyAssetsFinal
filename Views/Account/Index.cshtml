@@ -1,0 +1,45 @@
+@model IEnumerable<Account>
+@{
+    ViewData["Title"] = "Account List";
+}
+
+<div class="row">
+    <table class=" col-md-8  table table-striped table-bordered">
+        <thead>
+        <th>@Html.DisplayNameFor(m=> m.Email)</th>
+        <th>@Html.DisplayNameFor(m=> m.NickName)</th>
+        <th>@Html.DisplayNameFor(m=> m.CreationDate)</th>
+        <th>@Html.DisplayNameFor(m=> m.CountryCreation)</th>
+        <th>@Html.DisplayNameFor(m=> m.ProfilePictureURL)</th>
+        <th>Actions</th>
+        </thead>
+        <tbody>
+            @foreach (var person in Model)
+            {
+                <tr>
+
+                    <td class="align-middle">@person.Email</td>
+                    <td class="align-middle">@person.Password</td>
+                    <td class="align-middle">@person.NickName</td>
+                    <td class="align-middle">@person.CreationDate</td>
+                    <td class="align-middle">@person.CountryCreation</td>
+                    <td class="align-middle">@person.ProfilePictureURL</td>
+                    <td>
+                        <a class="btn btn-outline-primary" style="margin-bottom: 5px" asp-action="Edit" asp-route-id="@person.Id"><i class="bi bi-pen"></i></a>
+                        <br />
+                        <a class="btn btn-outline-info" style="margin-bottom: 5px" asp-action="Details" asp-route-id="@person.Id"><i class="bi bi-info-circle"></i></a>
+                        <br />
+                        <a class="btn btn-outline-danger" style="margin-bottom: 5px" asp-action="Delete" asp-route-id="@person.Id"><i class="bi bi-trash"></i></a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+<div class="text-white mb-4" style="position:fixed; right: 25px; bottom : 35px;">
+    <a asp-controller="Person" asp-action="Create" class="btn btn-success">
+        <i class="bi bi-plus-circle"></i> Add New
+    </a>
+
+</div>
