@@ -41,9 +41,14 @@ namespace OnlyAssetsFinal.Data.Services
             await _context.SaveChangesAsync();
         }
 
-        public Task DeleteAccountAsync(NewAccountVM data)
+        public async Task DeleteAccountAsync(NewAccountVM data)
         {
-            throw new NotImplementedException();
+            var dbAsset = await _context.Account.FirstOrDefaultAsync(a => a.Id == data.Id);
+            if (dbAsset != null)
+            {
+                _context.Remove(dbAsset);
+                await _context.SaveChangesAsync();
+            }
         }
 
         public async  Task<Account> GetAccountByIdAsync(int id)
