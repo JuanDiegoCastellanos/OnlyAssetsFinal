@@ -1,7 +1,7 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using OnlyAssetsFinal.Data.Enums;
-using ustaTickets.Data.Base;
+using OnlyAssetsFinal.Data.Base;
 
 namespace OnlyAssetsFinal.Models
 {

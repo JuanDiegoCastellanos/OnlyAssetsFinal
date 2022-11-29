@@ -1,6 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 using OnlyAssetsFinal.Data.Enums;
-using ustaTickets.Data.Base;
+using OnlyAssetsFinal.Data.Base;
 
 namespace OnlyAssetsFinal.Models
 {

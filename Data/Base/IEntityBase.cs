@@ -1,4 +1,4 @@
-﻿namespace ustaTickets.Data.Base
+﻿namespace OnlyAssetsFinal.Data.Base
 {
     public interface IEntityBase
     {

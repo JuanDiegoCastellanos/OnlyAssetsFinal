@@ -1,6 +1,6 @@
 ﻿using System.Linq.Expressions;
 
-namespace ustaTickets.Data.Base
+namespace OnlyAssetsFinal.Data.Base
 {
     public interface IEntityBaseRepository<T> where T : class, IEntityBase, new()
     {

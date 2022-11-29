@@ -1,7 +1,7 @@
 ﻿
 using System.ComponentModel.DataAnnotations;
 
-namespace onlyassets.Data.ViewModels
+namespace onlyAssets.Data.ViewModels
 {
     public class NewAccountVM
     {
@@ -39,9 +39,9 @@ namespace onlyassets.Data.ViewModels
         [Required(ErrorMessage = "Role is required")]
         public int RoleId { get; set; }
 
-        [Display(Name = "Select purchase(s)")]
-        [Required(ErrorMessage = "Purchase(s) is required")]
-        public List<int> PurchaseIds { get; set; }
+        [Display(Name = "Select Assets(s)")]
+        [Required(ErrorMessage = "Assets(s) is required")]
+        public List<int> AssetsIds { get; set; }
 
     }
 }

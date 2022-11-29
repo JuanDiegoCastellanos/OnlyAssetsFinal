@@ -1,5 +1,5 @@
 using System.ComponentModel.DataAnnotations;
-using ustaTickets.Data.Base;
+using OnlyAssetsFinal.Data.Base;
 
 namespace OnlyAssetsFinal.Models
 {

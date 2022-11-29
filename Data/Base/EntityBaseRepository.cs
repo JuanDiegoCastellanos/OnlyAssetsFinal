@@ -1,9 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
-using OnlyAssetsFinal.Data;
 using System.Linq.Expressions;
 
-namespace ustaTickets.Data.Base
+namespace OnlyAssetsFinal.Data.Base
 {
     public class EntityBaseRepository<T> : IEntityBaseRepository<T> where T : class, IEntityBase, new()
     {
