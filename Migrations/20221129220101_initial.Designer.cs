@@ -11,8 +11,8 @@ using OnlyAssetsFinal.Data;
 namespace OnlyAssetsFinal.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20221129215124_Initial")]
-    partial class Initial
+    [Migration("20221129220101_initial")]
+    partial class initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
