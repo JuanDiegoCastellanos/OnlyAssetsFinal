@@ -249,70 +249,7 @@ namespace OnlyAssetsFinal.Data
                 //         }
                 //     });
                 //     context.SaveChanges();
-                // }
-                // if (!context.Asset_Purchase.Any())
-                // {
-                //     context.Asset_Purchase.AddRange(new List<Asset_Purchase>(){
-
-                //         new Asset_Purchase()
-                //         {
-                //             AssetId = 1,
-                //             PurchaseId = 2
-                //         },
-                //         new Asset_Purchase()
-                //         {
-                //             AssetId = 9,
-                //             PurchaseId = 3
-                //         },
-                //         new Asset_Purchase()
-                //         {
-                //             AssetId = 5,
-                //             PurchaseId = 2
-                //         },
-                //         new Asset_Purchase()
-                //         {
-                //             AssetId = 2,
-                //             PurchaseId = 1
-                //         },
-                //         new Asset_Purchase()
-                //         {
-                //             AssetId = 3,
-                //             PurchaseId = 4
-                //         },
-                //         new Asset_Purchase()
-                //         {
-                //             AssetId = 8,
-                //             PurchaseId = 1
-                //         },
-                //         new Asset_Purchase()
-                //         {
-                //             AssetId = 7,
-                //             PurchaseId = 3
-                //         },
-                //         new Asset_Purchase()
-                //         {
-                //             AssetId = 6,
-                //             PurchaseId = 2
-                //         },
-                //         new Asset_Purchase()
-                //         {
-                //             AssetId = 4,
-                //             PurchaseId = 4
-                //         },
-                //         new Asset_Purchase()
-                //         {
-                //             AssetId = 7,
-                //             PurchaseId = 4
-                //         },
-                //         new Asset_Purchase()
-                //         {
-                //             AssetId = 9,
-                //             PurchaseId = 4
-                //         }
-
-                //     });
-                //     context.SaveChanges();
-                // }               
+                // }   
             
             }
         }
