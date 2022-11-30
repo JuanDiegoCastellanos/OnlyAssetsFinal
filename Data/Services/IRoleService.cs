@@ -1,10 +1,10 @@
-// using OnlyAssetsFinal.Models;
-// using ustaTickets.Data.Base;
+using OnlyAssetsFinal.Models;
+using OnlyAssetsFinal.Data.Base;
 
-// namespace ustaTickets.Data.Services
-// {
-//     public interface IRoleService:IEntityBaseRepository<Role>
-//     {
+namespace OnlyAssetsFinal.Data.Services
+{
+    public interface IRoleService:IEntityBaseRepository<Role>
+    {
  
-//     }
-// }
+    }
+}

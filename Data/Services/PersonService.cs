@@ -1,13 +1,13 @@
-// using OnlyAssetsFinal.Models;
-// using ustaTickets.Data.Base;
-// using ustaTickets.Data.Services;
+using OnlyAssetsFinal.Models;
+using OnlyAssetsFinal.Data.Base;
+using OnlyAssetsFinal.Data.ViewModels;
 
-// namespace OnlyAssetsFinal.Data.Services
-// {
-//     public class PersonService : EntityBaseRepository<Person>, IPersonService
-//     {
-//         public PersonService(ApplicationDbContext context) : base(context)
-//         {
-//         }
-//     }
-// }
+namespace OnlyAssetsFinal.Data.Services
+{
+    public class PersonService : EntityBaseRepository<Person>, IPersonService
+    {
+        public PersonService(ApplicationDbContext context) : base(context)
+        {
+        }
+    }
+}

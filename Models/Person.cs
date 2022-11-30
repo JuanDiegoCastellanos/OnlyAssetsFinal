@@ -8,8 +8,8 @@ namespace OnlyAssetsFinal.Models
         [Key]
         public int Id { get; set; }
 
-        [Display(Name = "Picture")]
-        [Required(ErrorMessage = "Profile Picture is required")]
+        [Display(Name = "Name")]
+        [Required(ErrorMessage = "Name is required")]
         public string Name { get; set; }
 
         [Display(Name = "SurName")]
