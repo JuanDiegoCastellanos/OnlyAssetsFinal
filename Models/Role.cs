@@ -9,6 +9,8 @@ namespace OnlyAssetsFinal.Models
         [Key]
         public int Id { get; set; }
 
+        [Display(Name = "Role")]
+        [Required(ErrorMessage = "Role is required")]
         public RoleType RoleType { get; set; }
 
         public List<Account> Accounts { get; set; }
