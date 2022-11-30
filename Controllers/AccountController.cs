@@ -1,6 +1,8 @@
 using Microsoft.AspNetCore.Mvc;
 using OnlyAssetsFinal.Models;
 using OnlyAssetsFinal.Data.Services;
+using Microsoft.AspNetCore.Mvc.Rendering;
+using OnlyAssetsFinal.Data.ViewModels;
 
 namespace OnlyAssetsFinal.Controllers
 {
@@ -16,30 +18,61 @@ namespace OnlyAssetsFinal.Controllers
 
         public async Task<IActionResult> Index()
         {
-            var data = await _service.GetAllAsync();
+            var data = await _service.GetAllAsync(p => p.Person, r => r.Role);
+            return View(data);
+        }
+
+        public async Task<IActionResult> Filter(string searchString)
+        {
+            var data = await _service.GetAllAsync(p => p.Person, r => r.Role);
+            
+            if (!string.IsNullOrEmpty(searchString))
+            {
+                var filteredResult = data.Where(
+                    n => n.NickName.Contains(searchString) || 
+                    n.Email.Contains(searchString)
+                ).ToList();
+                return View("Index", filteredResult);
+            }
+
+            return View("Index", data);
+        }
+
+        // Get: Movie/Details/id
+        public async Task<IActionResult> Details(int id)
+        {
+            var data = await _service.GetAccountByIdAsync(id);
             return View(data);
         }
 
         // Get: Actor/Create
-        public IActionResult Create()
+        public async Task<IActionResult> Create()
         {
+            var accountDropdownsData = await _service.GetNewAccountDropdownsValues();
+            ViewBag.Persons = new SelectList(accountDropdownsData.Persons, "Id", "FullName");
+            ViewBag.Roles = new SelectList(accountDropdownsData.Roles, "Id", "RoleType");
+            ViewBag.Assets = new SelectList(accountDropdownsData.Assets, "Id", "Name");
             return View();
         }
 
         [HttpPost]
-        public async Task<IActionResult> Create([Bind("Email,Password,NickName,CreationDate,CountryCreation,ProfilePictureURL")] Account account)
+        public async Task<IActionResult> Create(NewAccountVM account)
         {
             if (!ModelState.IsValid)
             {
-                //var message = string.Join(" | ", ModelState.Values
-                //    .SelectMany(v => v.Errors)
-                //    .Select(e => e.ErrorMessage));
+                var accountDropdownsData = await _service.GetNewAccountDropdownsValues();
+                ViewBag.Persons = new SelectList(accountDropdownsData.Persons, "Id", "FullName");
+                ViewBag.Roles = new SelectList(accountDropdownsData.Roles, "Id", "RoleType");
+                ViewBag.Assets = new SelectList(accountDropdownsData.Assets, "Id", "Name");
+
                 return View(account);
             }
-            await _service.AddAsync(account);
+            await _service.AddNewAccountAsync(account);
             return RedirectToAction(nameof(Index));
         }
 
+        [HttpPost]
+     
         // Get: Actor/Details/id
         public async Task<IActionResult> Details(int id)
         {
