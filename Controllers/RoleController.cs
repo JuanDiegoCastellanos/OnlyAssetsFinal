@@ -7,21 +7,20 @@ namespace OnlyAssetsFinal.Controllers
 
     public class RoleController : Controller
     {
-        /*
         private readonly IRoleService _service;
 
         public RoleController(IRoleService service)
         {
             _service = service;
         }
-
+        
         public async Task<IActionResult> Index()
         {
             var data = await _service.GetAllAsync();
             return View(data);
         }
 
-        // Get: Actor/Create
+        // Get: Role/Create
         public IActionResult Create()
         {
             return View();
@@ -32,16 +31,13 @@ namespace OnlyAssetsFinal.Controllers
         {
             if (!ModelState.IsValid)
             {
-                //var message = string.Join(" | ", ModelState.Values
-                //    .SelectMany(v => v.Errors)
-                //    .Select(e => e.ErrorMessage));
                 return View(role);
             }
             await _service.AddAsync(role);
             return RedirectToAction(nameof(Index));
         }
 
-        // Get: Actor/Details/id
+        // Get: Role/Details/id
         public async Task<IActionResult> Details(int id)
         {
             var roleDetails = await _service.GetByIdAsync(id);
@@ -49,7 +45,7 @@ namespace OnlyAssetsFinal.Controllers
             return View(roleDetails);
         }
 
-        // Get: Actor/Edit/id
+        // Get: Role/Edit/id
         public async Task<IActionResult> Edit(int id)
         {
             var roleDetails = await _service.GetByIdAsync(id);
@@ -58,7 +54,7 @@ namespace OnlyAssetsFinal.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,RoleType")] Role role)
+        public async Task<IActionResult> Edit(int id, [Bind("RoleType")] Role role)
         {
             if (!ModelState.IsValid) return View(role);
 
@@ -70,7 +66,7 @@ namespace OnlyAssetsFinal.Controllers
             return View(role);
         }
 
-        // Get: Actor/Delete/id
+        // Get: Role/Delete/id
         public async Task<IActionResult> Delete(int id)
         {
             var roleDetails = await _service.GetByIdAsync(id);
@@ -87,6 +83,5 @@ namespace OnlyAssetsFinal.Controllers
             await _service.DeleteAsync(id);
             return RedirectToAction(nameof(Index));
         }
-        */
     }
 }

@@ -6,21 +6,20 @@ namespace OnlyAssetsFinal.Controllers
 {
     public class CreatorController : Controller
     {
-        /*
         private readonly ICreatorService _service;
 
         public CreatorController(ICreatorService service)
         {
             _service = service;
         }
-
+        
         public async Task<IActionResult> Index()
         {
             var data = await _service.GetAllAsync();
             return View(data);
         }
 
-        // Get: Actor/Create
+        // Get: Creator/Create
         public IActionResult Create()
         {
             return View();
@@ -31,16 +30,13 @@ namespace OnlyAssetsFinal.Controllers
         {
             if (!ModelState.IsValid)
             {
-                //var message = string.Join(" | ", ModelState.Values
-                //    .SelectMany(v => v.Errors)
-                //    .Select(e => e.ErrorMessage));
                 return View(creator);
             }
             await _service.AddAsync(creator);
             return RedirectToAction(nameof(Index));
         }
 
-        // Get: Actor/Details/id
+        // Get: Creator/Details/id
         public async Task<IActionResult> Details(int id)
         {
             var creatorDetails = await _service.GetByIdAsync(id);
@@ -48,7 +44,7 @@ namespace OnlyAssetsFinal.Controllers
             return View(creatorDetails);
         }
 
-        // Get: Actor/Edit/id
+        // Get: Creator/Edit/id
         public async Task<IActionResult> Edit(int id)
         {
             var creatorDetails = await _service.GetByIdAsync(id);
@@ -57,7 +53,7 @@ namespace OnlyAssetsFinal.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,CompanyName,ContactNumber,ProfilePictureURL")] Creator creator)
+        public async Task<IActionResult> Edit(int id, [Bind("CompanyName,ContactNumber,ProfilePictureURL")] Creator creator)
         {
             if (!ModelState.IsValid) return View(creator);
 
@@ -69,7 +65,7 @@ namespace OnlyAssetsFinal.Controllers
             return View(creator);
         }
 
-        // Get: Actor/Delete/id
+        // Get: Creator/Delete/id
         public async Task<IActionResult> Delete(int id)
         {
             var creatorDetails = await _service.GetByIdAsync(id);
@@ -86,6 +82,5 @@ namespace OnlyAssetsFinal.Controllers
             await _service.DeleteAsync(id);
             return RedirectToAction(nameof(Index));
         }
-        */
     }
 }

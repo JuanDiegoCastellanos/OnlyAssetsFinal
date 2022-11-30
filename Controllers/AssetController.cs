@@ -12,14 +12,14 @@ namespace OnlyAssetsFinal.Controllers
         {
             _service = service;
         }
-
+        
         public async Task<IActionResult> Index()
         {
             var data = await _service.GetAllAsync();
             return View(data);
         }
 
-        // Get: Actor/Create
+        // Get: Asset/Create
         public IActionResult Create()
         {
             return View();
@@ -39,7 +39,7 @@ namespace OnlyAssetsFinal.Controllers
             return RedirectToAction(nameof(Index));
         }
 
-        // Get: Actor/Details/id
+        // Get: Asset/Details/id
         public async Task<IActionResult> Details(int id)
         {
             var assetDetails = await _service.GetByIdAsync(id);
@@ -47,7 +47,7 @@ namespace OnlyAssetsFinal.Controllers
             return View(assetDetails);
         }
 
-        // Get: Actor/Edit/id
+        // Get: Asset/Edit/id
         public async Task<IActionResult> Edit(int id)
         {
             var assetDetails = await _service.GetByIdAsync(id);
@@ -68,7 +68,7 @@ namespace OnlyAssetsFinal.Controllers
             return View(asset);
         }
 
-        // Get: Actor/Delete/id
+        // Get: Asset/Delete/id
         public async Task<IActionResult> Delete(int id)
         {
             var assetDetails = await _service.GetByIdAsync(id);

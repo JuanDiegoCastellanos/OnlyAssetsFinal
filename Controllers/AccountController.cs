@@ -38,14 +38,14 @@ namespace OnlyAssetsFinal.Controllers
             return View("Index", data);
         }
 
-        // Get: Movie/Details/id
+        // Get: Account/Details/id
         public async Task<IActionResult> Details(int id)
         {
             var data = await _service.GetAccountByIdAsync(id);
             return View(data);
         }
 
-        // Get: Actor/Create
+        // Get: Account/Create
         public async Task<IActionResult> Create()
         {
             var accountDropdownsData = await _service.GetNewAccountDropdownsValues();
@@ -71,38 +71,53 @@ namespace OnlyAssetsFinal.Controllers
             return RedirectToAction(nameof(Index));
         }
 
+        // Get: Account/Edit/id
         [HttpPost]
-     
-        // Get: Actor/Details/id
-        public async Task<IActionResult> Details(int id)
-        {
-            var accountDetails = await _service.GetByIdAsync(id);
-            if (accountDetails == null) return View("NotFound");
-            return View(accountDetails);
-        }
-
-        // Get: Actor/Edit/id
         public async Task<IActionResult> Edit(int id)
         {
-            var accountDetails = await _service.GetByIdAsync(id);
+            var accountDetails = await _service.GetAccountByIdAsync(id);
             if (accountDetails == null) return View("NotFound");
-            return View(accountDetails);
+
+            var response = new NewAccountVM()
+            {
+                Id = accountDetails.Id,
+                Email = accountDetails.Email,
+                Password = accountDetails.Password,
+                NickName = accountDetails.NickName,
+                CreationDate = accountDetails.CreationDate,
+                CountryCreation = accountDetails.CountryCreation,
+                ProfilePictureURL = accountDetails.ProfilePictureURL,
+                PersonId = accountDetails.PersonId,
+                RoleId = accountDetails.RoleId
+            };
+
+            var accountDropdownsData = await _service.GetNewAccountDropdownsValues();
+            ViewBag.Persons = new SelectList(accountDropdownsData.Persons, "Id", "FullName");
+            ViewBag.Roles = new SelectList(accountDropdownsData.Roles, "Id", "RoleType");
+            ViewBag.Assets = new SelectList(accountDropdownsData.Assets, "Id", "Name");
+            
+            return View(response);
         }
 
         [HttpPost]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Email,Password,NickName,CreationDate,CountryCreation,ProfilePictureURL")] Account account)
+         public async Task<IActionResult> Edit(int id, NewAccountVM account)
         {
-            if (!ModelState.IsValid) return View(account);
+            if (id != account.Id) return View("NotFound");
 
-            if (id == account.Id)
+            if (!ModelState.IsValid)
             {
-                await _service.UpdateAsync(id, account);
-                return RedirectToAction(nameof(Index));
+                var accountDropdownsData = await _service.GetNewAccountDropdownsValues();
+                ViewBag.Persons = new SelectList(accountDropdownsData.Persons, "Id", "FullName");
+                ViewBag.Roles = new SelectList(accountDropdownsData.Roles, "Id", "RoleType");
+                ViewBag.Assets = new SelectList(accountDropdownsData.Assets, "Id", "Name");
+
+                return View(account);
             }
-            return View(account);
+            await _service.UpdateAccountAsync(account);
+            return RedirectToAction(nameof(Index));
         }
 
-        // Get: Actor/Delete/id
+        // Get: Account/Delete/id
         public async Task<IActionResult> Delete(int id)
         {
             var accountDetails = await _service.GetByIdAsync(id);

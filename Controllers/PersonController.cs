@@ -1,5 +1,4 @@
 using Microsoft.AspNetCore.Mvc;
-using OnlyAssetsFinal.Data;
 using OnlyAssetsFinal.Models;
 using OnlyAssetsFinal.Data.Services;
 
@@ -7,21 +6,20 @@ namespace OnlyAssetsFinal.Controllers
 {
     public class PersonController : Controller
     {
-        /*
         private readonly IPersonService _service;
 
         public PersonController(IPersonService service)
         {
             _service = service;
         }
-
+        
         public async Task<IActionResult> Index()
         {
             var data = await _service.GetAllAsync();
             return View(data);
         }
 
-        // Get: Actor/Create
+        // Get: Person/Create
         public IActionResult Create()
         {
             return View();
@@ -32,16 +30,13 @@ namespace OnlyAssetsFinal.Controllers
         {
             if (!ModelState.IsValid)
             {
-                //var message = string.Join(" | ", ModelState.Values
-                //    .SelectMany(v => v.Errors)
-                //    .Select(e => e.ErrorMessage));
                 return View(person);
             }
             await _service.AddAsync(person);
             return RedirectToAction(nameof(Index));
         }
 
-        // Get: Actor/Details/id
+        // Get: Person/Details/id
         public async Task<IActionResult> Details(int id)
         {
             var personDetails = await _service.GetByIdAsync(id);
@@ -49,7 +44,7 @@ namespace OnlyAssetsFinal.Controllers
             return View(personDetails);
         }
 
-        // Get: Actor/Edit/id
+        // Get: Person/Edit/id
         public async Task<IActionResult> Edit(int id)
         {
             var personDetails = await _service.GetByIdAsync(id);
@@ -58,7 +53,7 @@ namespace OnlyAssetsFinal.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,SurName,FullName,BirthDate,Gender,PhoneNumber")] Person person)
+        public async Task<IActionResult> Edit(int id, [Bind("Name,SurName,FullName,BirthDate,Gender,PhoneNumber")] Person person)
         {
             if (!ModelState.IsValid) return View(person);
 
@@ -70,7 +65,7 @@ namespace OnlyAssetsFinal.Controllers
             return View(person);
         }
 
-        // Get: Actor/Delete/id
+        // Get: Person/Delete/id
         public async Task<IActionResult> Delete(int id)
         {
             var personDetails = await _service.GetByIdAsync(id);
@@ -87,6 +82,5 @@ namespace OnlyAssetsFinal.Controllers
             await _service.DeleteAsync(id);
             return RedirectToAction(nameof(Index));
         }
-        */
     }
 }
