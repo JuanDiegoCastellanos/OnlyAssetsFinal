@@ -1,0 +1,60 @@
+﻿@using OnlyAssetsFinal.Data.Static;
+@model IEnumerable<Account>
+
+@{
+    ViewData["Title"] = "List of Accounts";
+}
+
+<div class="row" style="margin-bottom: 5rem;">
+    @foreach (var account in Model)
+    {
+        <div class="col-md-4 col-xs-6 border-primary mb-3">
+            <div class="card mb-3" style="max-width: 540px;">
+                <div class="row g-0">
+                    <div class="col-md-12">
+                        <div class="card-header text-white bg-info">
+                            <p>
+                                @account.NickName
+                                @if (User.Identity.IsAuthenticated && User.IsInRole(UserRoles.Admin))
+                                {
+                                    <a class="text-white float-end mx-sm-1 my-sm-0" asp-action="Delete" asp-route-id="@account.Id">
+                                        <i class="bi bi-trash"></i>
+                                    </a>
+                                    <a class="text-white float-end mx-sm-1 my-sm-0" asp-action="Edit" asp-route-id="@account.Id">
+                                        <i class="bi bi-pencil-square"></i>
+                                    </a>
+                                    <a class="text-white float-end mx-sm-1 my-sm-0" asp-action="Details" asp-route-id="@account.Id">
+                                        <i class="bi bi-eye-fill"></i>
+                                    </a>
+                                }
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <img class="card-img-top" src="@account.ProfilePictureURL" alt="@account.ProfilePictureURL">
+                    </div>
+                    <div class="col-md-8">
+                        <div class="card-body">
+                            <p class="card-text small">
+                                @if (account.CountryCreation.Length <= 55)
+                                {
+                                    @account.CountryCreation
+                                }
+                                else
+                                {
+                                    @account.CountryCreation.Substring(0,55)
+                                }...
+                            </p>
+                            <p class="card-text small">
+                                <b>Role: </b>@account.Role.RoleType <br />
+                                <b>Person Name: </b>@account.Person.FullName <br />
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+
+@await Html.PartialAsync("_CreateItem", "Movie")
