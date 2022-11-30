@@ -39,8 +39,8 @@
                         <label asp-for="Gender" class="control-label"></label>
                         <select asp-for="Gender" class="form-select" aria-label="Select gender">
                             <option selected>Choose one...</option>
-                            <option value="1">Female</option>
-                            <option value="0">Masculino</option>
+                            <option value="false">Female</option>
+                            <option value="true">Masculino</option>
                         </select>
                         <span asp-validation-for="Gender" class="text-danger"></span>
                     </div>
