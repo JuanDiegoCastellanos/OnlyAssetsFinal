@@ -1,10 +1,9 @@
-// using OnlyAssetsFinal.Models;
-// using ustaTickets.Data.Base;
+using OnlyAssetsFinal.Models;
+using OnlyAssetsFinal.Data.Base;
 
-// namespace ustaTickets.Data.Services
-// {
-//     public interface IPersonService:IEntityBaseRepository<Person>
-//     {
- 
-//     }
-// }
+namespace OnlyAssetsFinal.Data.Services
+{
+    public interface IPersonService:IEntityBaseRepository<Person>
+    {
+    }
+}

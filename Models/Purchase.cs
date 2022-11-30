@@ -1,6 +1,4 @@
-using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using OnlyAssetsFinal.Data.Base;
 
 namespace OnlyAssetsFinal.Models
 {
@@ -13,8 +11,5 @@ namespace OnlyAssetsFinal.Models
         [ForeignKey("AssetId")]
         public Asset Asset {get; set; }
         
-        public string Description { get; set; }
-        public double TotalAmount { get; set; }
-
     }
 }

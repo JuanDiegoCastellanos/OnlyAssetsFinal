@@ -1,10 +1,11 @@
-// using OnlyAssetsFinal.Models;
-// using ustaTickets.Data.Base;
+using OnlyAssetsFinal.Models;
+using OnlyAssetsFinal.Data.Base;
+using OnlyAssetsFinal.Data.ViewModels;
 
-// namespace ustaTickets.Data.Services
-// {
-//     public interface ICreatorService:IEntityBaseRepository<Creator>
-//     {
- 
-//     }
-// }
+namespace OnlyAssetsFinal.Data.Services
+{
+    public interface ICreatorService:IEntityBaseRepository<Creator>
+    {
+
+    }
+}
