@@ -1,33 +1,22 @@
-﻿@model Cinema
+﻿@model Role
+@using OnlyAssetsFinal.Data.Enums;
+
 
 @{
-    ViewData["Title"] = "Update cinema";
+    ViewData["Title"] = "Update Role";
 }
 
 <div class="row text">
     <div class="col-md-8 offset-2">
-        <p><h1>Update cinema</h1></p>
+        <p><h1>Update Role</h1></p>
         <div class="row">
             <div class="col-md-8 offset-2">
                 <form asp-action="Edit">
                     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-                    <div class="form-group text-center">
-                        <img class="border-info rounded-circle" style="max-width: 100px" id="LogoPreview" />
-                    </div>
                     <div class="form-group">
-                        <label asp-for="Logo" class="control-label"></label>
-                        <input asp-for="Logo" class="form-control" />
-                        <span asp-validation-for="Logo" class="text-danger"></span>
-                    </div>
-                    <div class="form-group">
-                        <label asp-for="Name" class="control-label"></label>
-                        <input asp-for="Name" class="form-control" />
-                        <span asp-validation-for="Name" class="text-danger"></span>
-                    </div>
-                    <div class="form-group">
-                        <label asp-for="Description" class="control-label"></label>
-                        <textarea asp-for="Description" class="form-control"></textarea>
-                        <span asp-validation-for="Description" class="text-danger"></span>
+                        <label asp-for="RoleType" class="control-label"></label>
+                        <select asp-for="RoleType" class="form-control" asp-items="Html.GetEnumSelectList<RoleType>()"></select>
+                        <span asp-validation-for="RoleType" class="text-danger"></span>
                     </div>
                     <div class="form-group mt-2">
                         <input type="submit" value="Update" class="btn btn-outline-success float-end" />
@@ -38,18 +27,3 @@
         </div>
     </div>
 </div>
-
-@section Scripts
-{
-    <script>
-        $(document).ready(function () {
-            var output = document.getElementById('LogoPreview');
-            output.src = $("#Logo").val();
-        })
-
-        $("#Logo").on("change", function () {
-            var output = document.getElementById('LogoPreview');
-            output.src = $(this).val();
-        })
-    </script>
-}
