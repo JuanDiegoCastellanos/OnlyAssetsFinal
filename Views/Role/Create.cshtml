@@ -1,0 +1,28 @@
+﻿@using OnlyAssetsFinal.Data.Enums;
+@model Role
+
+@{
+    ViewData["Title"] = "Add a new Role";
+}
+
+<div class="row text">
+    <div class="col-md-8 offset-2">
+        <p><h1>Add a new Role</h1></p>
+        <div class="row">
+            <div class="col-md-8 offset-2">
+                <form asp-action="Create">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="form-group">
+                        <label asp-for="RoleType" class="control-label"></label>
+                        <select asp-for="RoleType" class="form-control" asp-items="Html.GetEnumSelectList<RoleType>()"></select>
+                        <span asp-validation-for="RoleType" class="text-danger"></span>
+                    </div>
+                    <div class="form-group mt-2">
+                        <input type="submit" value="Create" class="btn btn-outline-success float-end" />
+                        <a class="btn btn-outline-secondary" asp-action="Index">Show all</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
