@@ -1,0 +1,39 @@
+﻿@model IEnumerable<Person>
+
+@{
+    ViewData["Title"] = "List of Persons";
+}
+
+<div class="row">
+    <div class="col-md-10 offset-md-1">
+        <table class="table">
+            <thead>
+                <tr class="text-center">
+                    <th>@Html.DisplayNameFor(m => m.FullName)</th>
+                    <th>@Html.DisplayNameFor(m => m.BirthDate)</th>
+                    <th>@Html.DisplayNameFor(m => m.Gender)</th>
+                    <th>@Html.DisplayNameFor(m => m.PhoneNumber)</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var person in Model)
+                {
+                    <tr class="text-center">
+                        <td class="text-start small">@person.FullName</td>
+                        <td class="text-start small">@person.BirthDate</td>
+                        <td class="text-start small">@person.Gender</td>
+                        <td class="text-start small">@person.PhoneNumber</td>
+                        <td class="text-start text-nowrap">
+                            <a class="btn btn-outline-primary btn-sm col-4" asp-action="Edit" asp-route-id="@person.Id"><i class="bi bi-pencil-square"></i> Edit</a>
+                            <a class="btn btn-outline-info btn-sm col-4" asp-action="Details" asp-route-id="@person.Id"> <i class="bi bi-eye"></i> Details</a>
+                            <a class="btn btn-danger text-white btn-sm col-4" asp-action="Delete" asp-route-id="@person.Id"><i class="bi bi-trash"></i> Delete</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+@await Html.PartialAsync("_CreateItem", "Director")
